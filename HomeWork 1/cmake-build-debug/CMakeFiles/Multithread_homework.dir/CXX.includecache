@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/Floydan/Documents/Programming_projects/C++/Multithread homework/HomeWork 1/main.cpp
+iostream
+-
+sstream
+-
+pthread.h
+-
+cmath
+-
+
