@@ -89,9 +89,9 @@ int main(int argc, char* argv[]) {
         }
 
         int size = matrixSize * matrixSize; // количество обрабатываемых элементов
-        threadSize = ceil((double)size / threadsNumber);
+        threadSize = ceil((double)size / threadsNumber); // количество элементов, считаемых одним потоком
 
-        int maxThreads = ceil((double)size / threadSize);
+        int maxThreads = ceil((double)size / threadSize); // максимальное количество потоков
 
         if (threadsNumber > maxThreads) {
             cout << "Количество потоков превышает допустимое значение, равное " << maxThreads <<
