@@ -1,0 +1,4 @@
+﻿  Multithread.cpp
+C:\Users\User\source\repos\Multithread\Multithread\Multithread.cpp(92,20): warning C4244:  =: преобразование "double" в "int", возможна потеря данных
+C:\Users\User\source\repos\Multithread\Multithread\Multithread.cpp(94,18): warning C4244:  инициализация: преобразование "double" в "int", возможна потеря данных
+  Multithread.vcxproj -> C:\Users\User\source\repos\Multithread\Debug\Multithread.exe
