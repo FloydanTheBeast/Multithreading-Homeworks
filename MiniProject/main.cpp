@@ -34,11 +34,12 @@ public:
         cout << "\tПарикмахер приступил к стижке клиента №" << client->id << endl;
         isBusy = true;
         clients.pop();
+
+        pthread_mutex_unlock(&queueMutex);
+
         this_thread::sleep_for(chrono::milliseconds(rand() % 300 + 300));
         isBusy = false;
         cout << "\tПаркмахер закончил стрижку клиента №" << client->id << ". Длина очереди - " << clients.size() << endl;
-
-        pthread_mutex_unlock(&queueMutex);
     }
 };
 
@@ -49,7 +50,7 @@ void* startWorking(void* barberData) {
     chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
     for (;;) {
-        if (chrono::duration_cast<chrono::seconds>(chrono::steady_clock::now() - begin).count() > WORKING_TIME) {
+        if (chrono::duration_cast<chrono::seconds>(chrono::steady_clock::now() - begin).count() >= WORKING_TIME) {
             cout << "Рабочий день заканчивается, парикмахерская закрывается";
             exit(0);
         }
@@ -107,7 +108,7 @@ int main(int argc, char** argv) {
 
     for (int i = 0; i < CLIENTS_NUMBER; i++) {
         clientsData[i].id = id++;
-        clientsData[i].timeToCome = rand() % (WORKING_TIME * 1000) + 100;
+        clientsData[i].timeToCome = rand() % (WORKING_TIME * 900) + 100;
 
         pthread_create(&(clientsThreads[i]), NULL, goToQueue, &clientsData[i]);
     }
